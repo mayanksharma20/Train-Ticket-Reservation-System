@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+	<script src="https://cdn.tailwindcss.com?plugins=forms,typography,aspect-ratio,line-clamp"></script>
+    <title>header</title>
+</head>
+<body>
+    <header class="bg-gray-900 lg:py-8">
+		<div class="px-4 mx-auto max-w-7xl sm:px-6 lg:px-8">
+			<nav class="relative flex items-center justify-between h-16 bg-white lg:rounded-md lg:shadow-lg lg:h-24 lg:px-8 lg:py-6">
+				<div class="flex-shrink-0">
+					<a href="#" title="" class="flex">
+						<h2 class="text-3xl font-bold leading-tight text-black sm:text-4xl">Train Reservation System</h2>
+						
+					</a>
+				</div>
+	
+				<button type="button" class="inline-flex p-2 ml-5 text-black transition-all duration-200 rounded-md lg:hidden focus:bg-gray-100 hover:bg-gray-100">
+					<svg class="w-6 h-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+						<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
+					</svg>
+				</button>
+	
+				<div class="hidden ml-10 lg:flex items-center space-x-6 lg:space-x-10">
+					<a href="UserLogin.html" title="" class="text-base font-medium text-black transition-all duration-200 hover:text-blue-600 focus:text-blue-600">Login as User</a>
+	
+					<a href="UserRegister.html" title="" class="text-base font-medium text-black transition-all duration-200 hover:text-blue-600 focus:text-blue-600"> New User Register </a>
+	
+					<a href="AdminLogin.html" title="" class="text-base font-medium text-black transition-all duration-200 hover:text-blue-600 focus:text-blue-600"> Login as Admin </a>
+				</div>
+					
+			</nav>
+	
+			
+			<nav class="flex flex-col py-4 space-y-2 lg:hidden">
+				<a href="UserLogin.html" title="" class="py-2 text-base font-medium text-black transition-all duration-200 focus:text-blue-600"> Login as User </a>
+	
+				<a href="UserRegister.html" title="" class="py-2 text-base font-medium text-black transition-all duration-200 focus:text-blue-600"> New User Register </a>
+	
+				<a href="AdminLogin.html" title="" class="py-2 text-base font-medium text-black transition-all duration-200 focus:text-blue-600"> Login as Admin </a>
+			</nav>
+		</div>
+	</header>
+</body>
+</html>

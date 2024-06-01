@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="ISO-8859-1">
+	<title>E-Trains</title>
+	<link rel="stylesheet" href="UserHome_Css.css">
+	<script
+		src="https://code.jquery.com/jquery-3.3.1.js"
+		integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
+		crossorigin="anonymous">
+	</script>
+</head>
+<body>
+	
+	<div id="adminheader"></div>
+	<script type="text/javascript">
+		$( "#adminheader" ).load( "adminHeaderMain.html" );
+	</script>	
+	
+	<div class='main'>
+		<p class='menu'>Train Cancellation</p>
+	</div>
+	<form class="tab" style="padding-top: 30px; padding-bottom: 20px; font-size: large;" action="admincancletrain" method="post" onsubmit="return validateInput()">
+		Train Number: <input style="height: 30px;" type="text" name="trainno" id="trainno" required><br />
+		<br /> <input class="btn" type="submit" value=" CANCEL TRAIN ">
+	</form>
+	<br />
+
+	<script type="text/javascript">
+		function validateInput() {
+			var trainNumber = document.getElementById("trainno").value;
+			var regex = /^[0-9]+$/;
+
+			if (!regex.test(trainNumber)) {
+				alert("Please enter only numeric characters for the train number.");
+				return false;
+			}
+			return true;
+		}
+	</script>
+
+</body>
+</html>
+
+
+<!-- <!DOCTYPE html>
+<html>
+<head>
+	<meta charset="ISO-8859-1">
+	<title>E-Trains</title>
+	<link rel="stylesheet" href="UserHome_Css.css">
+	<script
+    src="https://code.jquery.com/jquery-3.3.1.js"
+    integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
+    crossorigin="anonymous">
+	</script>
+	
+
+</head>
+<body>
+	
+	<div id="adminheader"></div>
+		<script type="text/javascript">
+			$( "#adminheader" ).load( "adminHeaderMain.html" );
+		</script>	
+	
+	<div class='main'>
+		<p class='menu'>Train Cancellation</p>
+	</div>
+	<form class="tab" style="padding-top: 30px; padding-bottom: 20px; font-size: large;" action="admincancletrain" method="post">
+		Train Number: <input style="height: 30px;" type="text" name="trainno"><br />
+		<br /> <input class="btn" type="submit" value=" CANCLE TRAIN ">
+	</form>
+	<br />
+
+</body>
+</html> -->

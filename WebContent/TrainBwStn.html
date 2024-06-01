@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="ISO-8859-1">
+	<title>E-Trains</title>
+	<link rel="stylesheet" href="UserHome_Css.css">
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+</head>
+<body>
+
+	<div id="content"></div>
+	<script type="text/javascript">
+		$( "#content" ).load( "userHeaderMain.html" );
+	</script>
+
+	<div class="main">
+		<p class="menu">Trains Between Stations</p>
+	</div>
+	<form action="trainbwstn" style="padding-top: 30px; padding-bottom: 20px; font-size: large;" class="tab red" method="post" onsubmit="return validateInput()">
+		From Station: <input style="height: 30px;" type="text" name="fromstation" id="fromstation" required><br/><br/>
+		<br /> &nbsp&nbsp&nbsp&nbsp To Station: <input style="height: 30px;" type="text" name="tostation" id="tostation" required><br />
+		<br /> <input class="btn" type="submit" value=" SEARCH TRAIN "><br />
+	</form>
+	<br />
+
+	<script type="text/javascript">
+		function validateInput() {
+			var fromStation = document.getElementById("fromstation").value;
+			var toStation = document.getElementById("tostation").value;
+			var regex = /^[A-Za-z]+$/;
+
+			if (!regex.test(fromStation) || !regex.test(toStation)) {
+				alert("Please enter only alphabetic characters for station names.");
+				return false;
+			}
+			return true;
+		}
+	</script>
+
+</body>
+</html>
+
+<!-- <!DOCTYPE html>
+<html>
+<head>
+	<meta charset="ISO-8859-1">
+	<title>E-Trains</title>
+	<link rel="stylesheet" href="UserHome_Css.css">
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+</head>
+<body>
+
+	<div id="content"></div>
+		<script type="text/javascript">
+			$( "#content" ).load( "userHeaderMain.html" );
+		</script>
+	
+
+
+	<div class="main">
+		<p class="menu">Trains Between Stations</p>
+	</div>
+	<form action="trainbwstn" style="padding-top: 30px; padding-bottom: 20px; font-size: large;" class="tab red" method="post">
+		From Station: <input style="height: 30px;" type="text" name="fromstation" required><br/><br/>
+		<br /> &nbsp&nbsp&nbsp&nbsp To Station: <input style="height: 30px;" type="text" name="tostation" required><br />
+		<br /> <input class="btn"  type="submit" value=" SEARCH TRAIN "><br />
+	</form>
+	<br />
+
+</body>
+</html> -->

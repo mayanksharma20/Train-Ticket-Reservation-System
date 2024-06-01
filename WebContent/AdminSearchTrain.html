@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="ISO-8859-1">
+	<title>E-Trains</title>
+	<link rel="stylesheet" href="UserHome_Css.css">
+	<script
+		src="https://code.jquery.com/jquery-3.3.1.js"
+		integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
+		crossorigin="anonymous">
+	</script>
+</head>
+<body>
+	<div id="adminheader"></div>
+	<script type="text/javascript">
+		$( "#adminheader" ).load( "adminHeaderMain.html" );
+	</script>
+
+	<div class="main">
+		<p class="menu">Search Trains</p>
+	</div>
+	<form action="adminsearchtrain" style="padding-top: 30px; padding-bottom: 20px; font-size: large;" class="tab red" method="post" onsubmit="return validateInput()">
+		<br /> TrainNumber: <input style="height: 30px;" type="number" name="trainnumber" id="trainnumber" required><br />
+		<br /> <input class="btn" type="submit" value=" SEARCH TRAIN "><br />
+	</form>
+	<br />
+	
+	<script type="text/javascript">
+		function validateInput() {
+			var trainNumber = document.getElementById("trainnumber").value;
+			var regex = /^[0-9]+$/;
+
+			if (!regex.test(trainNumber)) {
+				alert("Please enter only numeric characters for the train number.");
+				return false;
+			}
+			return true;
+		}
+	</script>
+	
+</body>
+</html>
+
+
+<!-- <!DOCTYPE html>
+<html>
+<head>
+	<meta charset="ISO-8859-1">
+	<title>E-Trains</title>
+	<link rel="stylesheet" href="UserHome_Css.css">
+	<script
+    src="https://code.jquery.com/jquery-3.3.1.js"
+    integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
+    crossorigin="anonymous">
+	</script>
+</head>
+<body>
+	<div id="adminheader"></div>
+		<script type="text/javascript">
+			$( "#adminheader" ).load( "adminHeaderMain.html" );
+		</script>
+
+	
+	
+	<div class="main">
+		<p class="menu">Search Trains</p>
+	</div>
+	<form action="adminsearchtrain" style="padding-top: 30px; padding-bottom: 20px; font-size: large;" class="tab red" method="post">
+		<br /> TrainNumber: <input style="height: 30px;" type="text" name="trainnumber"><br />
+		<br /> <input class="btn" type="submit" value=" SEARCH TRAIN "><br />
+	</form>
+	<br />
+	
+</body>
+</html> -->

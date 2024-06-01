@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="ISO-8859-1">
+	<title>E-Trains</title>
+	<link rel="stylesheet" href="UserHome_Css.css">
+	<script
+    src="https://code.jquery.com/jquery-3.3.1.js"
+    integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
+    crossorigin="anonymous">
+	</script>
+	<script src="https://cdn.tailwindcss.com"></script>
+	<script src="https://cdn.tailwindcss.com?plugins=forms,typography,aspect-ratio,line-clamp"></script>
+
+</head>
+<body>
+	
+	<div id="adminheader"></div>
+		<script type="text/javascript">
+			$( "#adminheader" ).load( "adminHeaderMain.html" );
+		</script>
+
+<div class="relative max-w-lg px-4 mx-auto sm:px-0">
+	<div class="overflow-hidden bg-white rounded-md shadow-md">
+		<div class="px-4 py-6 sm:px-8 sm:py-7">
+			<div class="text-center">
+				<h2 class="text-3xl font-bold text-gray-900">Search Trains</h2>
+
+			</div>
+
+			<h2 class="text-xl font-semibold mb-6">Add Trains</h2>
+			<form action="adminaddtrain" method="post" class="flex flex-wrap">
+				<div class="mb-4 w-full flex items-center">
+					<label for="trainno" class="w-24 text-right text-sm font-medium text-gray-700 mr-2">Train Number:</label>
+					<input type="text" id="trainno" name="trainno" class="flex-1 mt-1 focus:ring-indigo-500 focus:border-indigo-500 shadow-sm sm:text-sm border-gray-300 rounded-md">
+				</div>
+				<div class="mb-4 w-full flex items-center">
+					<label for="trainname" class="w-24 text-right text-sm font-medium text-gray-700 mr-2">Train Name:</label>
+					<input type="text" id="trainname" name="trainname" class="flex-1 mt-1 focus:ring-indigo-500 focus:border-indigo-500 shadow-sm sm:text-sm border-gray-300 rounded-md">
+				</div>
+				<div class="mb-4 w-full flex items-center">
+					<label for="fromstation" class="w-24 text-right text-sm font-medium text-gray-700 mr-2">From Station:</label>
+					<input type="text" id="fromstation" name="fromstation" class="flex-1 mt-1 focus:ring-indigo-500 focus:border-indigo-500 shadow-sm sm:text-sm border-gray-300 rounded-md">
+				</div>
+				<div class="mb-4 w-full flex items-center">
+					<label for="tostation" class="w-24 text-right text-sm font-medium text-gray-700 mr-2">To Station:</label>
+					<input type="text" id="tostation" name="tostation" class="flex-1 mt-1 focus:ring-indigo-500 focus:border-indigo-500 shadow-sm sm:text-sm border-gray-300 rounded-md">
+				</div>
+				<div class="mb-4 w-full flex items-center">
+					<label for="available" class="w-24 text-right text-sm font-medium text-gray-700 mr-2">Available:</label>
+					<input type="text" id="available" name="available" class="flex-1 mt-1 focus:ring-indigo-500 focus:border-indigo-500 shadow-sm sm:text-sm border-gray-300 rounded-md">
+				</div>
+				<div class="mb-4 w-full flex items-center">
+					<label for="fare" class="w-24 text-right text-sm font-medium text-gray-700 mr-2">Fare (INR):</label>
+					<input type="text" id="fare" name="fare" class="flex-1 mt-1 focus:ring-indigo-500 focus:border-indigo-500 shadow-sm sm:text-sm border-gray-300 rounded-md">
+				</div>
+				<div class="w-full">
+					<button type="submit" class="bg-indigo-600 text-white py-2 px-4 rounded-md hover:bg-indigo-700 focus:outline-none focus:bg-indigo-700">Add Train</button>
+				</div>
+			</form>
+		</div>
+	</div>
+</div>
+
+	
+<script>
+    // JavaScript validation for train number input
+    document.getElementById('trainno').addEventListener('input', function(event) {
+        const trainNoInput = event.target;
+        const trainNoValue = trainNoInput.value.trim();
+        if (!/^\d+$/.test(trainNoValue)) {
+            alert('Train number can only contain digits (0-9)');
+            trainNoInput.value = trainNoValue.replace(/[^\d]/g, '');
+        }
+    });
+
+    // JavaScript validation for train name input
+    document.getElementById('trainname').addEventListener('input', function(event) {
+        const trainNameInput = event.target;
+        const trainNameValue = trainNameInput.value.trim();
+        if (!/^[a-zA-Z]+$/.test(trainNameValue)) {
+            alert('Train name can only contain alphabets (a-z, A-Z)');
+            trainNameInput.value = trainNameValue.replace(/[^a-zA-Z]/g, '');
+        }
+    });
+
+    // JavaScript validation for station inputs
+    const stationInputs = document.querySelectorAll('#fromstation, #tostation');
+    stationInputs.forEach(function(stationInput) {
+        stationInput.addEventListener('input', function(event) {
+            const stationValue = event.target.value.trim();
+            if (!/^[a-zA-Z]+$/.test(stationValue)) {
+                alert('Station name can only contain alphabets (a-z, A-Z)');
+                event.target.value = stationValue.replace(/[^a-zA-Z]/g, '');
+            }
+        });
+    });
+
+    // JavaScript validation for available input
+    document.getElementById('available').addEventListener('input', function(event) {
+        const availableInput = event.target;
+        const availableValue = availableInput.value.trim();
+        if (!/^\d+$/.test(availableValue)) {
+            alert('Available seats can only contain digits (0-9)');
+            availableInput.value = availableValue.replace(/[^\d]/g, '');
+        }
+    });
+
+	// JavaScript validation for fare input
+    document.getElementById('fare').addEventListener('input', function(event) {
+        const fareInput = event.target;
+        const fareValue = fareInput.value.trim();
+        if (!/^\d+(\.\d{0,2})?$/.test(fareValue)) {
+            alert('Fare can only contain digits (0-9) and optionally a decimal point with up to two decimal places');
+            fareInput.value = fareValue.replace(/[^\d.]/g, '').replace(/(\..*)\./g, '$1');
+        }
+    });
+</script>
+
+	
+	<!-- <div class='main'>
+		<p class='menu'> Add Trains </p>
+	</div>
+	<form class="tab" action="adminaddtrain" method="post">
+		<br /> Train Number:<input type="text" name="trainno"><br />
+		<br /> Train Name: <input type="text" name="trainname"><br />
+		<br /> From Station: <input type="text" name="fromstation"><br />
+		<br /> To Station: <input type="text" name="tostation"><br />
+		<br /> Available: <input type="text" name="available"><br />
+		<br /> Fare (INR): <input type="text" name="fare"><br />
+		<br /> <input type="submit" value=" ADD TRAIN ">
+	</form>
+	<br /> -->
+</body>
+</html>

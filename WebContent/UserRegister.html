@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Train Reservation System</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+	<script src="https://cdn.tailwindcss.com?plugins=forms,typography,aspect-ratio,line-clamp"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+    <style>
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 1rem;
+        }
+
+        .grid-item {
+            display: flex;
+            flex-direction: column;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="header"></div>
+
+
+    <section class="relative py-10  sm:py-16 lg:py-24">
+        <div class="px-4 mx-auto max-w-7xl sm:px-6 lg:px-8">
+            <div class="absolute inset-0">
+                <img class="object-cover w-full h-full" src="forest.jpg" alt="forest.jpg"
+                    style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: -1;">
+            </div>
+            <div class="absolute inset-0 bg-gray-900/20"></div>
+
+            <div class="relative max-w-lg px-4 mx-auto sm:px-0">
+                <div class="overflow-hidden bg-white rounded-md shadow-md">
+                    <div class="px-4 py-6 sm:px-8 sm:py-7">
+                        <div class="text-center">
+                            <h2 class="text-3xl font-bold text-gray-900">Create an account</h2>
+                            <p class="mt-2 text-base text-gray-600">Already joined? <a href="UserLogin.html" title="" class="text-blue-600 transition-all duration-200 hover:underline hover:text-blue-700">Sign in now</a></p>
+                        </div>
+
+                        <form id="signupForm" action="userreg" method="POST" class="mt-8">
+                            <div class="grid-container">
+                                <div class="grid-item">
+                                    <label for="mailid" class="text-base font-medium text-gray-900">Email address</label>
+                                    <input type="email" id="mailid" name="mailid" placeholder="Enter your email address" required
+                                        class="block w-full px-4 py-3 mt-1 text-black placeholder-gray-500 transition-all duration-200 bg-white border border-gray-200 rounded-md focus:outline-none focus:border-blue-600 caret-blue-600" />
+                                </div>
+
+                                <div class="grid-item">
+                                    <label for="pword" class="text-base font-medium text-gray-900">Password</label>
+                                    <input type="password" id="pword" name="pword" placeholder="Enter your password" required
+                                        class="block w-full px-4 py-3 mt-1 text-black placeholder-gray-500 transition-all duration-200 bg-white border border-gray-200 rounded-md focus:outline-none focus:border-blue-600 caret-blue-600" />
+                                </div>
+
+                                <div class="grid-item">
+                                    <label for="firstname" class="text-base font-medium text-gray-900">First Name</label>
+                                    <input type="text" id="firstname" name="firstname" placeholder="Enter your first name" required
+                                        class="block w-full px-4 py-3 mt-1 text-black placeholder-gray-500 transition-all duration-200 bg-white border border-gray-200 rounded-md focus:outline-none focus:border-blue-600 caret-blue-600" />
+                                </div>
+
+                                <div class="grid-item">
+                                    <label for="lastname" class="text-base font-medium text-gray-900">Last Name</label>
+                                    <input type="text" id="lastname" name="lastname" placeholder="Enter your last name" required
+                                        class="block w-full px-4 py-3 mt-1 text-black placeholder-gray-500 transition-all duration-200 bg-white border border-gray-200 rounded-md focus:outline-none focus:border-blue-600 caret-blue-600" />
+                                </div>
+
+                                <div class="grid-item">
+                                    <label for="address" class="text-base font-medium text-gray-900">Address</label>
+                                    <input type="text" id="address" name="address" placeholder="Enter your address" required
+                                        class="block w-full px-4 py-3 mt-1 text-black placeholder-gray-500 transition-all duration-200 bg-white border border-gray-200 rounded-md focus:outline-none focus:border-blue-600 caret-blue-600" />
+                                </div>
+
+                                <div class="grid-item">
+                                    <label for="phoneno" class="block text-base font-medium text-gray-900">Phone No</label>
+                                    <input type="tel" 
+											id="phoneno" 
+											name="phoneno" 
+											placeholder="Enter your phone number (10 digits only)" 
+											pattern="[0-9]{10}" 
+											maxlength="10"
+											oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" 
+											pattern="[0-9]{10}" 
+											required
+
+                                        class="block w-full px-4 py-3 mt-1 text-black placeholder-gray-500 transition-all duration-200 bg-white border border-gray-200 rounded-md focus:outline-none focus:border-blue-600 caret-blue-600" />
+                                </div>
+
+                                <div class="grid-item">
+                                    <button type="submit" class="inline-flex items-center justify-center w-full px-4 py-4 text-base font-semibold text-white transition-all duration-200 bg-blue-600 border border-transparent rounded-md focus:outline-none hover:bg-blue-700 focus:bg-blue-700">Sign up</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div id="footer"></div>
+
+    <script>
+        document.getElementById('signupForm').addEventListener('submit', function (event) {
+            const firstNameInput = document.getElementById('firstname');
+            const lastNameInput = document.getElementById('lastname');
+            const phoneInput = document.getElementById('phoneno');
+    
+            // Regular expression patterns for first name, last name, and phone number
+            const namePattern = /^[a-zA-Z]+$/;
+            const phonePattern = /^\d{10}$/;
+    
+            // Check if first name contains only alphabets
+            if (!namePattern.test(firstNameInput.value.trim())) {
+                alert('Please enter a valid first name (only alphabets allowed).');
+                firstNameInput.focus();
+                event.preventDefault();
+                return;
+            }
+    
+            // Check if last name contains only alphabets
+            if (!namePattern.test(lastNameInput.value.trim())) {
+                alert('Please enter a valid last name (only alphabets allowed).');
+                lastNameInput.focus();
+                event.preventDefault();
+                return;
+            }
+    
+            // Check if phone number contains 10 digits
+            if (!phonePattern.test(phoneInput.value.trim())) {
+                alert('Please enter a valid 10-digit phone number.');
+                phoneInput.focus();
+                event.preventDefault();
+                return;
+            }
+        });
+    </script>
+
+    <!-- <script>
+        
+        document.getElementById('signupForm').addEventListener('submit', function (event) {
+            const phoneInput = document.getElementById('phoneno');
+            const phoneValue = phoneInput.value.trim();
+            if (!/^\d{10}$/.test(phoneValue)) {
+                alert('Please enter a valid 10-digit phone number');
+                phoneInput.focus();
+                event.preventDefault();
+            }
+        });
+    </script> -->
+
+
+    <script type="text/javascript">
+        $( "#header" ).load( "header.html" );
+        $( "#footer" ).load( "footer.html" );
+
+    </script>
+
+</body>
+
+</html>
+
